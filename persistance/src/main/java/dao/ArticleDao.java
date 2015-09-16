@@ -6,6 +6,7 @@ import model.Article;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 public class ArticleDao implements IArticleDao {
@@ -29,6 +30,7 @@ public class ArticleDao implements IArticleDao {
     public void updateArticle(Article article){
     Article articleFromDb = this.getArticle(article.getId());
             if( articleFromDb != null){
+                articleFromDb.setLastedit(new Date());
                 articleFromDb.setTitle(article.getTitle());
                 articleFromDb.setComments(article.getComments());
                 articleFromDb.setDescription(article.getDescription());
@@ -38,6 +40,7 @@ public class ArticleDao implements IArticleDao {
     }
     @Transactional
     public void saveArticle(Article article){
+        article.setDate(new Date());
       this.entityManager.persist(article);
     }
     @Transactional

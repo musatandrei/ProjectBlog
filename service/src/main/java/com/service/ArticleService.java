@@ -47,8 +47,6 @@ public class ArticleService {
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
     public void addArticle(@RequestBody Article newArticle) {
-        newArticle.setDate(new Date());
-        newArticle.setLastedit(new Date());
 
         this.articleFacade.saveArticle(newArticle);
     }
@@ -56,7 +54,6 @@ public class ArticleService {
     @ResponseBody
     public void updateArticle(@PathVariable("id") Long articleId, @RequestBody Article articleUpdates){
         articleUpdates.setId(articleId);
-        articleUpdates.getLastedit();
         this.articleFacade.updateArticle(articleUpdates);
     }
 

@@ -37,8 +37,7 @@ public class CommentService {
     @ResponseBody
     public void addComment(@PathVariable("articleId") Long articleId, @RequestBody Comment comment){
         comment.setArticleId(articleId);
-        comment.setDate(new Date());
-        comment.setLastedit(new Date());
+
         this.commentFacade.saveComment(comment);
     }
     @DateTimeFormat
@@ -47,7 +46,7 @@ public class CommentService {
     public void updateComment(@PathVariable("articleId") Long articleId,@PathVariable("commentId") Long commentId, @RequestBody Comment comment){
         comment.setId(commentId);
         comment.setArticleId(articleId);
-        comment.getLastedit();
+
 
         this.commentFacade.updateComment(comment);
     }
