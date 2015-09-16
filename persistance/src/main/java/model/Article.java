@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name="article")
@@ -23,14 +24,38 @@ public class Article implements Serializable {
     private String description;
     @Column(name="Comments")
     private String comments;
+    @Column(name="date")
+    private Date date;
+    @Column(name="lastedit")
+    private Date lastedit;
 
     public Article(){}
 
-    public Article(Long id, String title, String description, String comments) {
-        id = id;
-        title = title;
-        description = description;
-        comments = comments;
+    public Article(String title, String description, String comments, Date date, Date lastedit) {
+        this.title = title;
+        this.description = description;
+        this.comments = comments;
+        this.date = date;
+        this.lastedit = lastedit;
+    }
+
+    public Date getLastedit() {
+
+        return lastedit;
+    }
+
+    public void setLastedit(Date lastedit) {
+        this.lastedit = lastedit;
+    }
+
+
+    public Date getDate() {
+
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getTitle() {
